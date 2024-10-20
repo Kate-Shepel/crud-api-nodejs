@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 4000;
 
 const requestListener = async (request: IncomingMessage, response: ServerResponse) => {
   console.log(`Received request: ${request.method} ${request.url}`);
+  
   if (request.url?.startsWith('/api/users') && request.method === 'GET') {
     getUsers(request, response);
   } else {
