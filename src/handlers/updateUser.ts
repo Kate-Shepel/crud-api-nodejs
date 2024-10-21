@@ -27,7 +27,9 @@ export const updateUser = async (request: IncomingMessage, response: ServerRespo
 
     if (!requestBody) {
       response.writeHead(400, { 'Content-Type': 'application/json' });
-      response.end(JSON.stringify({ message: 'Please add PUT request body to update the user: username, age, and hobbies' }));
+      response.end(
+        JSON.stringify({ message: 'Please add PUT request body to update the user: username, age, and hobbies' }),
+      );
       return;
     }
 
@@ -35,7 +37,11 @@ export const updateUser = async (request: IncomingMessage, response: ServerRespo
 
     if (!username || typeof username !== 'string' || !age || typeof age !== 'number' || !Array.isArray(hobbies)) {
       response.writeHead(400, { 'Content-Type': 'application/json' });
-      response.end(JSON.stringify({ message: 'Invalid request data. Please provide valid username, age, and hobbies for the user.' }));
+      response.end(
+        JSON.stringify({
+          message: 'Invalid request data. Please provide valid username, age, and hobbies for the user.',
+        }),
+      );
       return;
     }
 

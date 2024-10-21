@@ -3,7 +3,7 @@ import { createServer, IncomingMessage, ServerResponse } from 'http';
 
 import { getUsers } from '../handlers/getUsers.js';
 import { updateUser } from '../handlers/updateUser.js';
-import { createNewUser } from '../handlers/createNewUser.js'
+import { createNewUser } from '../handlers/createNewUser.js';
 import { deleteUser } from '../handlers/deleteUser.js';
 
 dotenv.config();
@@ -29,10 +29,12 @@ const requestListener = async (request: IncomingMessage, response: ServerRespons
 
 const server = createServer(requestListener);
 
-server.listen(PORT, () => {
-  console.log(`Server started on port: ${PORT}`);
-}).on('error', (err) => {
-  console.error('Error starting server:', err);
-});
+server
+  .listen(PORT, () => {
+    console.log(`Server started on port: ${PORT}`);
+  })
+  .on('error', (err) => {
+    console.error('Error starting server:', err);
+  });
 
 export default server;

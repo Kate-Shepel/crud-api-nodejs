@@ -9,7 +9,9 @@ export const createNewUser = async (request: IncomingMessage, response: ServerRe
 
     if (!requestBody) {
       response.writeHead(400, { 'Content-Type': 'application/json' });
-      response.end(JSON.stringify({ message: 'Please add POST request body for a new user: username, age, and hobbies' }));
+      response.end(
+        JSON.stringify({ message: 'Please add POST request body for a new user: username, age, and hobbies' }),
+      );
       return;
     }
 
@@ -17,7 +19,9 @@ export const createNewUser = async (request: IncomingMessage, response: ServerRe
 
     if (!username || typeof username !== 'string' || !age || typeof age !== 'number' || !Array.isArray(hobbies)) {
       response.writeHead(400, { 'Content-Type': 'application/json' });
-      response.end(JSON.stringify({ message: 'Invalid request data. Please provide username, age, and hobbies for a new user.' }));
+      response.end(
+        JSON.stringify({ message: 'Invalid request data. Please provide username, age, and hobbies for a new user.' }),
+      );
       return;
     }
 
@@ -25,7 +29,7 @@ export const createNewUser = async (request: IncomingMessage, response: ServerRe
       id: uuidv4(),
       username,
       age,
-      hobbies
+      hobbies,
     };
 
     users.push(newUser);
@@ -34,6 +38,6 @@ export const createNewUser = async (request: IncomingMessage, response: ServerRe
     response.end(JSON.stringify(newUser));
   } catch (err) {
     response.writeHead(500, { 'Content-Type': 'application/json' });
-    response.end(JSON.stringify({ message: 'Server error' }));
+    response.end(JSON.stringify({ message: `Server error: ${err}` }));
   }
 };
