@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import { createServer, IncomingMessage, ServerResponse } from 'http';
-import { getUsers } from '../handlers/users.js';
+
+import { createNewUser, getUsers } from '../handlers/users.js';
 
 dotenv.config();
 
@@ -8,9 +9,11 @@ const PORT = process.env.PORT || 4000;
 
 const requestListener = async (request: IncomingMessage, response: ServerResponse) => {
   console.log(`Received request: ${request.method} ${request.url}`);
-  
+
   if (request.url?.startsWith('/api/users') && request.method === 'GET') {
     getUsers(request, response);
+  } else if (request.url === '/api/users' && request.method === 'POST') {
+    createNewUser(request, response);
   } else {
     response.writeHead(404, { 'Content-Type': 'application/json' });
     response.end(JSON.stringify({ message: 'Route not found' }));

@@ -1,5 +1,6 @@
-import { User } from '../types/User.js';
 import { v4 as uuidv4 } from 'uuid';
+
+import { User } from '../types/User.js';
 
 export const users: User[] = [
   { id: uuidv4(), username: 'Alice', age: 28, hobbies: ['piano', 'chess'] },
