@@ -30,7 +30,7 @@ export const getUsers = (request: IncomingMessage, response: ServerResponse) => 
   }
 };
 
-const extractRequestBody = (request: IncomingMessage): Promise<string> => {
+export const extractRequestBody = (request: IncomingMessage): Promise<string> => {
   return new Promise((resolve, reject) => {
     let body = '';
     request.on('data', (chunk) => {
