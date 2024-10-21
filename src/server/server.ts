@@ -1,8 +1,9 @@
 import dotenv from 'dotenv';
 import { createServer, IncomingMessage, ServerResponse } from 'http';
 
-import { createNewUser, getUsers } from '../handlers/users.js';
+import { getUsers } from '../handlers/getUsers.js';
 import { updateUser } from '../handlers/updateUser.js';
+import { createNewUser } from '../handlers/createNewUser.js'
 
 dotenv.config();
 

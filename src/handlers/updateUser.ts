@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import { validate as isUuid } from 'uuid';
 import { users } from '../data/usersDB.js';
-import { extractRequestBody } from './users.js';
+import { extractRequestBody } from './getUsers.js';
 
 export const updateUser = async (request: IncomingMessage, response: ServerResponse) => {
   const urlParts = request.url?.split('/');
