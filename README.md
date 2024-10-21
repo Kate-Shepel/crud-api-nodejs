@@ -53,6 +53,6 @@ To test the application, you can use [Postman Desktop Agent](https://www.postman
 {
   "username": "Samanta",
   "age": 40,
-  "hobbies": "['sleeping', 'swimming']"
+  "hobbies": ["sleeping", "swimming"]
 }
 ```
