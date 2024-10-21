@@ -4,10 +4,10 @@ import { users } from '../data/usersDB.js';
 import { extractRequestBody } from './getUsers.js';
 
 export const updateUser = async (request: IncomingMessage, response: ServerResponse) => {
-  const urlParts = request.url?.split('/');
+  const pathSegments = request.url?.split('/');
 
-  if (urlParts && urlParts.length === 4 && urlParts[3]) {
-    const userId = urlParts[3];
+  if (pathSegments && pathSegments.length === 4 && pathSegments[3]) {
+    const userId = pathSegments[3];
 
     if (!isUuid(userId)) {
       response.writeHead(400, { 'Content-Type': 'application/json' });

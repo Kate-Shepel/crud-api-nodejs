@@ -4,6 +4,7 @@ import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { getUsers } from '../handlers/getUsers.js';
 import { updateUser } from '../handlers/updateUser.js';
 import { createNewUser } from '../handlers/createNewUser.js'
+import { deleteUser } from '../handlers/deleteUser.js';
 
 dotenv.config();
 
@@ -18,6 +19,8 @@ const requestListener = async (request: IncomingMessage, response: ServerRespons
     createNewUser(request, response);
   } else if (request.url?.startsWith('/api/users') && request.method === 'PUT') {
     updateUser(request, response);
+  } else if (request.url?.startsWith('/api/users') && request.method === 'DELETE') {
+    deleteUser(request, response);
   } else {
     response.writeHead(404, { 'Content-Type': 'application/json' });
     response.end(JSON.stringify({ message: 'Route not found' }));
